@@ -1,0 +1,22 @@
+// ...
+
+equipoController.show = function(req, res) {
+    Equipo.findOne({_id: req.params.id}).exec(function(err, equipo) {
+        if(err) { console.log('Error:', err); return; }
+        res.render('../views/equipo/show', {equipo: equipo});
+    });
+};
+
+equipoController.create = function(req, res) {
+    res.render('../views/equipo/create');
+};
+
+equipoController.edit = function(req, res) {
+  Equipo.findOne({_id: req.params.id}).exec(function (err, equipo) {
+    if (err) { console.log("Error:", err); return; }
+    
+    res.render("../views/equipo/edit", {equipo: equipo});
+  });
+};
+
+// ...
